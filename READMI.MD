@@ -1,5 +1,6 @@
 # NovaTech Solutions
 
+
 Página web corporativa de una empresa de tecnología ficticia. La hice como práctica de HTML, CSS y JavaScript, y también para probar el flujo de trabajo con Git y GitHub (ramas `develop` y `master`, commits, merges).
 
 No usa frameworks ni base de datos. Es una página estática que funciona abriendo el `index.html`.
