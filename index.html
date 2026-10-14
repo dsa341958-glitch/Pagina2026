@@ -1,15 +1,87 @@
-<<!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <h1>Pagina</h1>
-        
-        <script src="" async defer></script>
-    </body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tablero Kanban</title>
+  <meta name="description" content="Tablero Kanban con drag and drop y localStorage">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>📋 Tablero Kanban</h1>
+    <div class="controls">
+      <input type="search" id="search" placeholder="Buscar tarea...">
+      <select id="filterPriority">
+        <option value="todas">Todas las prioridades</option>
+        <option value="alta">Alta</option>
+        <option value="media">Media</option>
+        <option value="baja">Baja</option>
+      </select>
+      <button id="themeToggle" class="btn ghost" title="Cambiar tema">🌙</button>
+      <button id="addBtn" class="btn primary">+ Nueva tarea</button>
+    </div>
+  </header>
+
+  <section class="progress-wrap">
+    <div class="progress-info">
+      <span>Progreso general</span>
+      <span id="progressText">0%</span>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+  </section>
+
+  <main class="board">
+    <section class="column" data-status="todo">
+      <h2>Por hacer <span class="count" id="count-todo">0</span></h2>
+      <div class="list" id="list-todo"></div>
+    </section>
+
+    <section class="column" data-status="doing">
+      <h2>En progreso <span class="count" id="count-doing">0</span></h2>
+      <div class="list" id="list-doing"></div>
+    </section>
+
+    <section class="column" data-status="done">
+      <h2>Hecho <span class="count" id="count-done">0</span></h2>
+      <div class="list" id="list-done"></div>
+    </section>
+  </main>
+
+  <dialog id="taskDialog">
+    <form id="taskForm">
+      <h3 id="dialogTitle">Nueva tarea</h3>
+
+      <label>Título
+        <input type="text" id="taskTitle" required maxlength="60">
+      </label>
+
+      <label>Descripción
+        <textarea id="taskDesc" rows="3" maxlength="200"></textarea>
+      </label>
+
+      <div class="row">
+        <label>Prioridad
+          <select id="taskPriority">
+            <option value="alta">Alta</option>
+            <option value="media" selected>Media</option>
+            <option value="baja">Baja</option>
+          </select>
+        </label>
+
+        <label>Fecha límite
+          <input type="date" id="taskDue">
+        </label>
+      </div>
+
+      <div class="dialog-actions">
+        <button type="button" id="cancelBtn" class="btn ghost">Cancelar</button>
+        <button type="submit" class="btn primary">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
 </html>
