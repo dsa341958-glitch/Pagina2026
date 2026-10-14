@@ -196,13 +196,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   restartTimer();
 
-  /* ============ 9. PRECIOS MENSUAL / ANUAL ============ */
+ 
   const billingToggle = document.getElementById("billingToggle");
-  billingToggle.addEventListener("change", () => {
+
+  function formatSoles(value) {
+    return Number(value).toLocaleString("es-PE");
+  }
+
+  function updatePrices() {
     document.querySelectorAll("[data-monthly]").forEach(el => {
-      el.textContent = billingToggle.checked ? el.dataset.yearly : el.dataset.monthly;
+      const value = billingToggle.checked ? el.dataset.yearly : el.dataset.monthly;
+      el.textContent = formatSoles(value);
     });
-  });
+  }
+
+  billingToggle.addEventListener("change", updatePrices);
+  updatePrices();
 
   /* ============ 10. FAQ (ACORDEÓN) ============ */
   document.querySelectorAll(".faq-item").forEach(item => {
