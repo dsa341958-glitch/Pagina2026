@@ -226,7 +226,9 @@ button { font: inherit; cursor: pointer; }
 .plan.featured { border: 2px solid var(--primary); transform: scale(1.04); }
 .ribbon { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.9rem; border-radius: 99px; }
 .price { font-size: 2.8rem; font-weight: 800; margin: 0.8rem 0 1.2rem; }
+.price::before { content: "S/ "; }
 .price small { font-size: 1rem; font-weight: 400; color: var(--muted); }
+
 .plan ul { margin-bottom: 1.8rem; flex: 1; }
 .plan li { padding: 0.5rem 0; border-bottom: 1px solid var(--border); color: var(--muted); }
 
