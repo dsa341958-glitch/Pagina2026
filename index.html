@@ -3,85 +3,425 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tablero Kanban</title>
-  <meta name="description" content="Tablero Kanban con drag and drop y localStorage">
-  <link rel="stylesheet" href="../CSS/styles.css">
+  <title>NovaTech Solutions | Soluciones tecnológicas a tu medida</title>
+  <meta name="description" content="NovaTech Solutions: desarrollo de software, apps móviles, cloud, ciberseguridad y análisis de datos.">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <header class="topbar">
-    <h1>📋 Tablero Kanban</h1>
-    <div class="controls">
-      <input type="search" id="search" placeholder="Buscar tarea...">
-      <select id="filterPriority">
-        <option value="todas">Todas las prioridades</option>
-        <option value="alta">Alta</option>
-        <option value="media">Media</option>
-        <option value="baja">Baja</option>
-      </select>
-      <button id="themeToggle" class="btn ghost" title="Cambiar tema">🌙</button>
-      <button id="addBtn" class="btn primary">+ Nueva tarea</button>
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo">Nova<span>Tech</span></a>
+
+      <nav id="menu" class="menu" aria-label="Menú principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#precios">Planes</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto" class="btn primary small">Contacto</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="icon-toggle" aria-label="Cambiar tema">🌙</button>
+        <button id="burger" class="burger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
 
-  <section class="progress-wrap">
-    <div class="progress-info">
-      <span>Progreso general</span>
-      <span id="progressText">0%</span>
-    </div>
-    <div class="progress"><div id="progressBar"></div></div>
-  </section>
+  <main>
 
-  <main class="board">
-    <section class="column" data-status="todo">
-      <h2>Por hacer <span class="count" id="count-todo">0</span></h2>
-      <div class="list" id="list-todo"></div>
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="hero">
+      <img class="hero-bg" src="img/hero.jpg" alt="Equipo de NovaTech trabajando" data-label="hero.jpg">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="tag">🚀 Innovación que impulsa tu negocio</span>
+        <h1>Transformamos ideas en <span class="gradient-text">soluciones digitales</span></h1>
+        <p>Desarrollamos software, apps y sistemas en la nube para que tu empresa crezca de forma segura y escalable.</p>
+        <div class="hero-buttons">
+          <a href="#contacto" class="btn primary">Solicitar demo</a>
+          <a href="#servicios" class="btn outline">Ver servicios</a>
+        </div>
+      </div>
     </section>
 
-    <section class="column" data-status="doing">
-      <h2>En progreso <span class="count" id="count-doing">0</span></h2>
-      <div class="list" id="list-doing"></div>
+    <!-- ============ ESTADÍSTICAS ============ -->
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat reveal">
+          <strong data-count="12">0</strong><span>Años de experiencia</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="250">0</strong><span>Proyectos entregados</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="120">0</strong><span>Clientes satisfechos</span>
+        </div>
+        <div class="stat reveal">
+          <strong data-count="35">0</strong><span>Expertos en el equipo</span>
+        </div>
+      </div>
     </section>
 
-    <section class="column" data-status="done">
-      <h2>Hecho <span class="count" id="count-done">0</span></h2>
-      <div class="list" id="list-done"></div>
+    <!-- ============ NOSOTROS ============ -->
+    <section id="nosotros" class="section">
+      <div class="container about">
+        <div class="about-img reveal">
+          <img src="img/nosotros.jpg" alt="Oficinas de NovaTech" data-label="nosotros.jpg">
+        </div>
+        <div class="about-text reveal">
+          <span class="eyebrow">Sobre nosotros</span>
+          <h2>Tecnología con propósito, resultados medibles</h2>
+          <p>Somos una empresa de tecnología fundada con una idea simple: que la innovación sea accesible para cualquier negocio. Combinamos diseño, ingeniería y estrategia para crear productos digitales que funcionan.</p>
+          <ul class="checklist">
+            <li>Metodologías ágiles y entregas continuas</li>
+            <li>Soporte técnico 24/7</li>
+            <li>Seguridad y calidad en cada línea de código</li>
+          </ul>
+          <a href="#contacto" class="btn primary">Conversemos</a>
+        </div>
+      </div>
     </section>
+
+    <!-- ============ SERVICIOS ============ -->
+    <section id="servicios" class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Servicios</span>
+          <h2>Lo que hacemos por tu empresa</h2>
+          <p>Soluciones integrales, desde la idea hasta el mantenimiento.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card reveal">
+            <img src="img/servicios/desarrollo.jpg" alt="Desarrollo de software" data-label="servicios/desarrollo.jpg">
+            <div class="card-body">
+              <h3>💻 Desarrollo de software</h3>
+              <p>Sistemas web a medida, ERP, CRM y plataformas empresariales.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/servicios/apps.jpg" alt="Aplicaciones móviles" data-label="servicios/apps.jpg">
+            <div class="card-body">
+              <h3>📱 Apps móviles</h3>
+              <p>Aplicaciones para Android e iOS con experiencia de usuario impecable.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/servicios/cloud.jpg" alt="Servicios en la nube" data-label="servicios/cloud.jpg">
+            <div class="card-body">
+              <h3>☁️ Cloud y DevOps</h3>
+              <p>Migración, infraestructura escalable y despliegue automatizado.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/servicios/ciberseguridad.jpg" alt="Ciberseguridad" data-label="servicios/ciberseguridad.jpg">
+            <div class="card-body">
+              <h3>🔒 Ciberseguridad</h3>
+              <p>Auditorías, pruebas de penetración y protección de tus datos.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/servicios/datos.jpg" alt="Análisis de datos" data-label="servicios/datos.jpg">
+            <div class="card-body">
+              <h3>📊 Datos e IA</h3>
+              <p>Dashboards, analítica avanzada y automatización inteligente.</p>
+            </div>
+          </article>
+          <article class="card reveal">
+            <img src="img/servicios/consultoria.jpg" alt="Consultoría tecnológica" data-label="servicios/consultoria.jpg">
+            <div class="card-body">
+              <h3>🧭 Consultoría TI</h3>
+              <p>Estrategia y hoja de ruta para tu transformación digital.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PORTAFOLIO ============ -->
+    <section id="portafolio" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Portafolio</span>
+          <h2>Proyectos que nos enorgullecen</h2>
+          <p>Haz clic en una imagen para verla en grande.</p>
+        </div>
+
+        <div class="filters reveal">
+          <button class="filter active" data-filter="todos">Todos</button>
+          <button class="filter" data-filter="web">Web</button>
+          <button class="filter" data-filter="app">Apps</button>
+          <button class="filter" data-filter="cloud">Cloud</button>
+        </div>
+
+        <div class="gallery">
+          <figure class="work" data-category="web">
+            <img src="img/portafolio/proyecto1.jpg" alt="Plataforma de e-commerce" data-label="portafolio/proyecto1.jpg">
+            <figcaption><strong>Plataforma e-commerce</strong><span>Web</span></figcaption>
+          </figure>
+          <figure class="work" data-category="app">
+            <img src="img/portafolio/proyecto2.jpg" alt="App de delivery" data-label="portafolio/proyecto2.jpg">
+            <figcaption><strong>App de delivery</strong><span>App móvil</span></figcaption>
+          </figure>
+          <figure class="work" data-category="cloud">
+            <img src="img/portafolio/proyecto3.jpg" alt="Migración a la nube" data-label="portafolio/proyecto3.jpg">
+            <figcaption><strong>Migración bancaria a la nube</strong><span>Cloud</span></figcaption>
+          </figure>
+          <figure class="work" data-category="web">
+            <img src="img/portafolio/proyecto4.jpg" alt="Portal corporativo" data-label="portafolio/proyecto4.jpg">
+            <figcaption><strong>Portal corporativo</strong><span>Web</span></figcaption>
+          </figure>
+          <figure class="work" data-category="app">
+            <img src="img/portafolio/proyecto5.jpg" alt="App de salud" data-label="portafolio/proyecto5.jpg">
+            <figcaption><strong>App de salud y bienestar</strong><span>App móvil</span></figcaption>
+          </figure>
+          <figure class="work" data-category="cloud">
+            <img src="img/portafolio/proyecto6.jpg" alt="Infraestructura escalable" data-label="portafolio/proyecto6.jpg">
+            <figcaption><strong>Infraestructura escalable</strong><span>Cloud</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EQUIPO ============ -->
+    <section id="equipo" class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Equipo</span>
+          <h2>Las personas detrás de NovaTech</h2>
+        </div>
+
+        <div class="team">
+          <article class="member reveal">
+            <img src="img/equipo/persona1.jpg" alt="Directora ejecutiva" data-label="equipo/persona1.jpg">
+            <h3>Laura Méndez</h3>
+            <span>CEO y fundadora</span>
+          </article>
+          <article class="member reveal">
+            <img src="img/equipo/persona2.jpg" alt="Director de tecnología" data-label="equipo/persona2.jpg">
+            <h3>Carlos Rivera</h3>
+            <span>CTO</span>
+          </article>
+          <article class="member reveal">
+            <img src="img/equipo/persona3.jpg" alt="Diseñadora UX" data-label="equipo/persona3.jpg">
+            <h3>Sofía Paredes</h3>
+            <span>Líder de diseño UX/UI</span>
+          </article>
+          <article class="member reveal">
+            <img src="img/equipo/persona4.jpg" alt="Ingeniero DevOps" data-label="equipo/persona4.jpg">
+            <h3>Diego Castillo</h3>
+            <span>Ingeniero DevOps</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="section">
+      <div class="container narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">Testimonios</span>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+
+        <div class="slider" id="slider">
+          <div class="slide active">
+            <p>“NovaTech entendió nuestro negocio desde el primer día. La plataforma que construyeron redujo nuestros tiempos operativos a la mitad.”</p>
+            <strong>Andrea Torres</strong><span>Gerente de operaciones, LogiPerú</span>
+          </div>
+          <div class="slide">
+            <p>“Profesionalismo, comunicación constante y entregas puntuales. Es el mejor socio tecnológico que hemos tenido.”</p>
+            <strong>Ricardo Salas</strong><span>Director general, FinCorp</span>
+          </div>
+          <div class="slide">
+            <p>“Migramos toda nuestra infraestructura a la nube sin interrupciones. El soporte es excelente.”</p>
+            <strong>Marcela Vega</strong><span>CIO, Grupo Andino</span>
+          </div>
+          <div class="dots" id="dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRECIOS ============ -->
+    <section id="precios" class="section alt">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Planes</span>
+          <h2>Soporte y mantenimiento a tu medida</h2>
+          <p>Elige el plan que mejor se adapte a tu empresa.</p>
+        </div>
+
+        <div class="billing reveal">
+          <span>Mensual</span>
+          <label class="switch">
+            <input type="checkbox" id="billingToggle">
+            <span class="slider-switch"></span>
+          </label>
+          <span>Anual <em class="save">-20%</em></span>
+        </div>
+
+        <div class="pricing">
+          <article class="plan reveal">
+            <h3>Starter</h3>
+            <p class="price">$<span data-monthly="49" data-yearly="39">49</span><small>/mes</small></p>
+            <ul>
+              <li>Soporte por correo</li>
+              <li>1 proyecto activo</li>
+              <li>Mantenimiento básico</li>
+              <li>Reportes mensuales</li>
+            </ul>
+            <a href="#contacto" class="btn outline-dark">Elegir plan</a>
+          </article>
+
+          <article class="plan featured reveal">
+            <span class="ribbon">Más popular</span>
+            <h3>Business</h3>
+            <p class="price">$<span data-monthly="149" data-yearly="119">149</span><small>/mes</small></p>
+            <ul>
+              <li>Soporte prioritario 24/7</li>
+              <li>5 proyectos activos</li>
+              <li>Monitoreo y backups</li>
+              <li>Reuniones quincenales</li>
+            </ul>
+            <a href="#contacto" class="btn primary">Elegir plan</a>
+          </article>
+
+          <article class="plan reveal">
+            <h3>Enterprise</h3>
+            <p class="price">$<span data-monthly="399" data-yearly="319">399</span><small>/mes</small></p>
+            <ul>
+              <li>Equipo dedicado</li>
+              <li>Proyectos ilimitados</li>
+              <li>Auditorías de seguridad</li>
+              <li>SLA personalizado</li>
+            </ul>
+            <a href="#contacto" class="btn outline-dark">Elegir plan</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" class="section">
+      <div class="container narrow">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Preguntas frecuentes</h2>
+        </div>
+
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">¿Cuánto tarda un proyecto típico? <span>+</span></button>
+            <div class="faq-a"><p>Depende del alcance. Un sitio corporativo toma de 3 a 6 semanas y un sistema a medida entre 3 y 6 meses. Siempre entregamos avances cada dos semanas.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">¿Ofrecen mantenimiento después de la entrega? <span>+</span></button>
+            <div class="faq-a"><p>Sí. Contamos con planes de soporte y mantenimiento mensual para mantener tu sistema actualizado y seguro.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">¿Trabajan con empresas de cualquier tamaño? <span>+</span></button>
+            <div class="faq-a"><p>Por supuesto. Hemos trabajado con emprendimientos, pymes y grandes corporaciones.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">¿Cómo manejan la seguridad de la información? <span>+</span></button>
+            <div class="faq-a"><p>Aplicamos buenas prácticas como cifrado, control de accesos, revisiones de código y pruebas de seguridad periódicas.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="section alt">
+      <div class="container contact">
+        <div class="contact-info reveal">
+          <span class="eyebrow">Contacto</span>
+          <h2>Hablemos de tu próximo proyecto</h2>
+          <p>Cuéntanos qué necesitas y te responderemos en menos de 24 horas.</p>
+          <ul class="info-list">
+            <li>📍 Av. Tecnología 123, Lima, Perú</li>
+            <li>📞 +51 999 999 999</li>
+            <li>✉️ contacto@novatech.example</li>
+            <li>🕒 Lun - Vie: 9:00 a 18:00</li>
+          </ul>
+        </div>
+
+        <form id="contactForm" class="contact-form reveal" novalidate>
+          <label>Nombre
+            <input type="text" id="name" placeholder="Tu nombre completo">
+            <small class="error" id="err-name"></small>
+          </label>
+
+          <label>Correo electrónico
+            <input type="email" id="email" placeholder="tucorreo@ejemplo.com">
+            <small class="error" id="err-email"></small>
+          </label>
+
+          <label>Asunto
+            <select id="subject">
+              <option value="">Selecciona un servicio</option>
+              <option>Desarrollo de software</option>
+              <option>App móvil</option>
+              <option>Cloud y DevOps</option>
+              <option>Ciberseguridad</option>
+              <option>Otro</option>
+            </select>
+            <small class="error" id="err-subject"></small>
+          </label>
+
+          <label>Mensaje
+            <textarea id="message" rows="4" placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+            <small class="error" id="err-message"></small>
+          </label>
+
+          <button type="submit" class="btn primary">Enviar mensaje</button>
+          <p class="form-success" id="formSuccess" hidden>✅ ¡Gracias! Tu mensaje fue enviado (simulación).</p>
+        </form>
+      </div>
+    </section>
+
   </main>
 
-  <dialog id="taskDialog">
-    <form id="taskForm">
-      <h3 id="dialogTitle">Nueva tarea</h3>
-
-      <label>Título
-        <input type="text" id="taskTitle" required maxlength="60">
-      </label>
-
-      <label>Descripción
-        <textarea id="taskDesc" rows="3" maxlength="200"></textarea>
-      </label>
-
-      <div class="row">
-        <label>Prioridad
-          <select id="taskPriority">
-            <option value="alta">Alta</option>
-            <option value="media" selected>Media</option>
-            <option value="baja">Baja</option>
-          </select>
-        </label>
-
-        <label>Fecha límite
-          <input type="date" id="taskDue">
-        </label>
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#inicio" class="logo">Nova<span>Tech</span></a>
+        <p>Soluciones tecnológicas para empresas que quieren crecer.</p>
       </div>
-
-      <div class="dialog-actions">
-        <button type="button" id="cancelBtn" class="btn ghost">Cancelar</button>
-        <button type="submit" class="btn primary">Guardar</button>
+      <div>
+        <h4>Enlaces</h4>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#contacto">Contacto</a>
       </div>
-    </form>
-  </dialog>
+      <div>
+        <h4>Síguenos</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">GitHub</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <p class="copy">© <span id="year"></span> NovaTech Solutions. Proyecto de práctica.</p>
+  </footer>
 
-  <script src="../JAVA/app.js"></script>
+  <!-- Botón volver arriba -->
+  <button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
+
+  <!-- Visor de imágenes -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">✕</button>
+    <img id="lightboxImg" src="" alt="">
+    <p id="lightboxCaption"></p>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
